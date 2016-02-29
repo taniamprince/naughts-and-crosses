@@ -58,22 +58,25 @@ end
 RSpec.describe Board, "#check_winner" do
 	context "with state where CPU is a winner" do
 		it "returns the winner if a winner is found, returns none otherwise" do
-			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", 4, 5, 6, 7, 8, 9]
+			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", \
+				"#{colourize("O", "cpu")}", 4, 5, 6, 7, 8, 9]
 			board_cpu = Board.new state, turn
 			expect(board_cpu.check_winner).to eq "O"
 		end
 	end
 	context "with state where Human is a winner" do
 		it "returns the winner if a winner is found, returns none otherwise" do
-			state = ["#{colourize("X", "human")}", "#{colourize("X", "human")}", "#{colourize("X", "human")}", 4, 5, 6, 7, 8, 9]
+			state = ["#{colourize("X", "human")}", "#{colourize("X", "human")}", \
+				"#{colourize("X", "human")}", 4, 5, 6, 7, 8, 9]
 			board_human = Board.new state, turn
 			expect(board_human.check_winner).to eq "X"
 		end
 	end
 	context "with state where the game is a tie" do
 		it "returns the winner if a winner is found, returns none otherwise" do
-			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", "#{colourize("X", "human")}",   \
-				"#{colourize("X", "human")}", 5, "#{colourize("X", "human")}", "#{colourize("X", "human")}", \
+			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", \
+				"#{colourize("X", "human")}", "#{colourize("X", "human")}", 5, \
+				 "#{colourize("X", "human")}", "#{colourize("X", "human")}", \
 				 "#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}"]
 			board_tie = Board.new state, turn
 			expect(board_tie.check_winner).to eq "none"
@@ -84,9 +87,11 @@ end
 RSpec.describe Board, "#game_over" do
 	context "with state where the game is over" do
 		it "returns true if the game is over, false otherwise" do
-			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", "#{colourize("X", "human")}", \
-				"#{colourize("X", "human")}", "#{colourize("O", "cpu")}", "#{colourize("X", "human")}",    \
-				"#{colourize("X", "human")}", "#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}"]
+			state = ["#{colourize("O", "cpu")}", "#{colourize("O", "cpu")}", \
+				"#{colourize("X", "human")}", "#{colourize("X", "human")}", \
+				"#{colourize("O", "cpu")}", "#{colourize("X", "human")}", \
+				"#{colourize("X", "human")}", "#{colourize("O", "cpu")}", \
+				"#{colourize("O", "cpu")}"]
 			board_over = Board.new state, turn
 			expect(board_over.game_over).to eq true
 		end
