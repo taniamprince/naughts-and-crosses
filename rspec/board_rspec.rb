@@ -13,9 +13,7 @@ RSpec.describe Board, "#initialize" do
 end
 
 # Board for testing
-state = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-turn = "CPU"
-board = Board.new state, turn
+board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
 
 RSpec.describe Board, "#new_board" do
 	context "with valid board object as argument" do
