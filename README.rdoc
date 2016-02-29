@@ -13,12 +13,22 @@ Run the game with the following command:
 * README.rdoc: This file
 * play.rb: Contains the logic to play the game
 * lib/board.rb: Class and functions for the board
-* lib/coulourize.rb: Function to colour the console output
+* lib/colourize.rb: Function to colour the console output
 * lib/cpu.rb: Class and functions for the AI
 * lib/util.rb: Utility functions used by play.rb
+* rspec/board_rspec.rb: Test file for board.rb
+* rspec/colourize_rspec.rb: Test file for colourize.rb
+* rspec/cpu_rspec.rb: Test file for cpu.rb
+* rspec/util_rspec.rb: Test file for util.rb
 
 == Testing
 
 Testing is performed using rpsec. To setup type the following command inside the project:
 
   $ gem install rspec
+
+To test type the following command:
+
+  $ rspec file_name
+
+Where file_name is the name of the test file
