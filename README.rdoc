@@ -1,18 +1,24 @@
 == Naughts & Crosses
 
-An unbeatable Naughts & Crosses game.
+A game of Naughts & Crosses with an unbeatable AI.
+
+== Instructions
+
+Run the game by typing:
+
+	$ ruby play.rb
 
 == Files
 
-README.rdoc: This file
-play.rb: Contains the logic to play the game
-lib/board.rb: Class and functions for the board
-lib/coulourize.rb: Function to colour the console output
-lib/cpu.rb: Class and functions for the AI
-lib/util.rb: Utility functions used by play.rb
+* README.rdoc: This file
+* play.rb: Contains the logic to play the game
+* lib/board.rb: Class and functions for the board
+* lib/coulourize.rb: Function to colour the console output
+* lib/cpu.rb: Class and functions for the AI
+* lib/util.rb: Utility functions used by play.rb
 
 == Testing
 
 Testing is performed using rpsec. To setup type the following command inside the project:
 
-$ gem install rspec
+	$ gem install rspec
