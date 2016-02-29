@@ -41,9 +41,9 @@ class CPU
 			return 5
 		elsif winner == "O" && moves > 5
 			return 1
-		elsif winner == "X" && moves <= 5
-			return -1
 		elsif winner == "X" && moves > 5
+			return -1
+		elsif winner == "X" && moves <= 5
 			return -5
 		else
 			return 0
@@ -53,23 +53,11 @@ class CPU
 
 	# Minimax algorithm to determine best possible move
 	def minimax board
-		# Return the score if the game is over
-		if board.game_over == true
-			if score(board) == 5
-				puts score(board)
-			end
-		end
+		# Return the final score if the game is over
 		return score(board) if board.game_over == true
 
 		scores = [] # Array to store possible scores
 		moves = []  # Array to store possible moves
-
-		moves.push(99)
-		if board.turn == "CPU"
-			scores.push(-10)
-		else
-			scores.push(10)
-		end
 
 	    # Recursively populate possible scores
 	    get_moves(board).each do |move|

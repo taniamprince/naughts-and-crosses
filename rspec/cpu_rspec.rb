@@ -64,6 +64,13 @@ end
 RSpec.describe CPU, "#minimax" do
 	context "with a board 1 step away from winning" do
 		it "should block the winning move" do
+			board.state = ["X", "X", 3, 4, 5, 6, 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 3
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
 			board.state = ["X", 2, "X", 4 , 5, 6, 7, 8, 9]
 			cpu.minimax(board)
 			expect(cpu.choice).to eq 2
@@ -71,9 +78,114 @@ RSpec.describe CPU, "#minimax" do
 	end
 	context "with a board 1 step away from winning" do
 		it "should block the winning move" do
+			board.state = [1, "X", "X", 4, 5, 6, 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 1
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
 			board.state = [1, 2, 3, "X", "X", 6, 7, 8, 9]
 			cpu.minimax(board)
 			expect(cpu.choice).to eq 6
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, "X", 5, "X", 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 5
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, "X", "X", 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 4
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, 5, 6, "X", "X", 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 9
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, 5, 6, "X", 8, "X"]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 8
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, 5, 6, 7, "X", "X"]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 7
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = ["X", 2, 3, "X", 5, 6, 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 7
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = ["X", 2, 3, 4, 5, 6, "X", 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 4
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, "X", 5, 6, "X", 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 1
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = ["X", 2, 3, 4, "X", 6, 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 9
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = ["X", 2, 3, 4, 5, 6, 7, 8, "X"]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 5
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, "X", 6, 7, 8, "X"]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 1
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, "X", 4, "X", 6, 7, 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 7
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, "X", 4, 5, 6, "X", 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 5
+		end
+	end
+	context "with a board 1 step away from winning" do
+		it "should block the winning move" do
+			board.state = [1, 2, 3, 4, "X", 6, "X", 8, 9]
+			cpu.minimax(board)
+			expect(cpu.choice).to eq 3
 		end
 	end
 end

@@ -84,9 +84,23 @@ RSpec.describe Board, "#check_winner" do
 end
 
 RSpec.describe Board, "#game_over" do
-	context "with state where the game is over" do
+	context "with state where the game is a tie" do
 		it "returns true if the game is over, false otherwise" do
 			state = ["O", "O", "X", "X", "O", "X", "X", "O", "O"]
+			board_over = Board.new state, turn
+			expect(board_over.game_over).to eq true
+		end
+	end
+	context "with state where the human has won" do
+		it "returns true if the game is over, false otherwise" do
+			state = ["X", "X", "X", "O", "O", 6, 7, 8, 9]
+			board_over = Board.new state, turn
+			expect(board_over.game_over).to eq true
+		end
+	end
+	context "with state where the cpu has won" do
+		it "returns true if the game is over, false otherwise" do
+			state = ["O", "O", "O", "X", "X", 6, 7, 8, 9]
 			board_over = Board.new state, turn
 			expect(board_over.game_over).to eq true
 		end
