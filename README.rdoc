@@ -4,9 +4,9 @@ A game of Naughts & Crosses with an unbeatable AI.
 
 == Instructions
 
-Run the game by typing:
-
-	$ ruby play.rb
+Run the game with the following command:
+ 
+  $ ruby play.rb
 
 == Files
 
@@ -21,4 +21,4 @@ Run the game by typing:
 
 Testing is performed using rpsec. To setup type the following command inside the project:
 
-	$ gem install rspec
+  $ gem install rspec
