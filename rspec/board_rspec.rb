@@ -1,5 +1,4 @@
 require '../lib/board'
-require '../lib/colourize'
 
 RSpec.describe Board, "#initialize" do
 	context "with valid state and turn arguments" do
