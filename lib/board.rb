@@ -5,18 +5,25 @@ class Board
 	# Winning positions
 	WINNERS = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
 
-	# Initializes the board
+	# State is row vector representing the board
+	# The positions correspond as follows
+	# 1|2|3
+    # -+-+-
+    # 4|5|6 -> [ 1 2 3 4 5 6 7 8 9 ]
+    # -+-+-
+    # 7|8|9
 	def initialize state, turn
 		@state = state
 		@turn = turn
 	end
 
+	# Creates and returns a copy of the board
 	def new_board
 	    board = self.class.new @state.dup, @turn.dup
 	    return board
   	end
 
-	# Display the board
+	# Displays the board
 	def display
 	    puts ""
 	    puts " #{@state[0]} | #{@state[1]} | #{@state[2]}"
