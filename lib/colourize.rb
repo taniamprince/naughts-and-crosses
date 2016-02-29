@@ -7,3 +7,14 @@ def colourize text, colour = "default", bgColour = "default"
     bgColour_code = bgColours[bgColour]
     return "\033[#{bgColour_code};#{colour_code}m#{text}\033[0m"
 end
+
+# Returns a move with colour
+def colour move
+	if move == "X"
+		return "#{colourize("X", "human")}"
+	elsif move == "O"
+		return "#{colourize("O", "cpu")}"
+	else
+		return move
+	end
+end

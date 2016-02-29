@@ -75,10 +75,10 @@ class CPU
 	    get_moves(board).each do |move|
 	    	possible = board.new_board
 	    	if possible.turn == "CPU"
-	    		possible.add_move(move, "#{colourize("O", "cpu")}")
+	    		possible.add_move(move, "O")
 	    		possible.turn = "Human"
 	    	else
-	    		possible.add_move(move, "#{colourize("X", "human")}")
+	    		possible.add_move(move, "X")
 	    		possible.turn = "CPU"
 	    	end
 	    	scores.push minimax(possible)

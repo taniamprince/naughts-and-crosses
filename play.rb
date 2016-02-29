@@ -24,7 +24,7 @@ loop do
 			move = get_move(board)
 
 			# Add move to the board
-			board.add_move(move, "#{colourize("X", "human")}")
+			board.add_move(move, "X")
 			
 			# Update player turn
 			board.turn = "CPU"
@@ -45,7 +45,7 @@ loop do
 			puts "The #{colourize("CPU", "cpu")} has chosen position #{move}"
 
 			# Add move to the board
-			board.add_move(move, "#{colourize("O", "cpu")}")
+			board.add_move(move, "O")
 
 			# Update player turn
 			board.turn = "Human"

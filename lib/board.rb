@@ -26,18 +26,18 @@ class Board
 	# Displays the board
 	def display
 	    puts ""
-	    puts " #{@state[0]} | #{@state[1]} | #{@state[2]}"
+	    puts " #{colour(@state[0])} | #{colour(@state[1])} | #{colour(@state[2])}"
 	    puts " --------- "
-	    puts " #{@state[3]} | #{@state[4]} | #{@state[5]}"
+	    puts " #{colour(@state[3])} | #{colour(@state[4])} | #{colour(@state[5])}"
 	    puts " --------- "
-	    puts " #{@state[6]} | #{@state[7]} | #{@state[8]}"
+	    puts " #{colour(@state[6])} | #{colour(@state[7])} | #{colour(@state[8])}"
 	    puts ""
   	end
 
   	# Returns true if move is invalid, false otherwise
   	def validate move
 		if move.between?(0, 8)
-			if @state[move] == "#{colourize("X", "human")}" || @state[move] == "#{colourize("O", "cpu")}"
+			if @state[move] == "X" || @state[move] == "O"
 				return true
 			else
 				return false
@@ -60,9 +60,9 @@ class Board
 		# Search through each winning combination and count the matches for both players
 		Board::WINNERS.each do |winner|
 			winner.each do |i|
-				if @state[i - 1] == "#{colourize("X", "human")}"
+				if @state[i - 1] == "X"
           			xCount = xCount + 1
-        		elsif @state[i - 1] == "#{colourize("O", "cpu")}"
+        		elsif @state[i - 1] == "O"
           			oCount = oCount + 1
         		end
 			end
