@@ -1,8 +1,8 @@
 class CPU
 
-	# Public ---------------------------------------------------------
-
 	attr_reader :choice
+
+	# Public ---------------------------------------------------------
 
 	def initialize
 		@choice = []  # Move the CPU will make
@@ -17,29 +17,29 @@ class CPU
 		scores = [] # Array to store possible scores
 		moves = []  # Array to store possible moves
 
-	    # Recursively get possible scores
-	    get_moves(board).each do |move|
+		# Recursively get possible scores
+			get_moves(board).each do |move|
 
-	    	# Get a new instance of the board
-	    	possible = board.new_board
+			# Get a new instance of the board
+			possible = board.new_board
 
-	    	# Add possible move to the board
-	    	add_possible_move(possible, move)
+			# Add possible move to the board
+			add_possible_move(possible, move)
 
-	    	# Store score and move
-	    	scores.push minimax(possible)
-	    	moves.push move
-    	end
+			# Store score and move
+			scores.push minimax(possible)
+			moves.push move
+		end
 
-    	if board.turn == "CPU" # Find and return the max score
-    		maxScore = scores.each_with_index.max[1]
-    		@choice = moves[maxScore]
-    		return scores[maxScore]
-    	else # Find and return the min score
-    		minScore = scores.each_with_index.min[1]
-    		@choice = moves[minScore]
-        	return scores[minScore]
-        end
+		if board.turn == "CPU" # Find and return the max score
+			maxScore = scores.each_with_index.max[1]
+			@choice = moves[maxScore]
+			return scores[maxScore]
+		else # Find and return the min score
+			minScore = scores.each_with_index.min[1]
+			@choice = moves[minScore]
+			return scores[minScore]
+		end
 	end
 
 	# Private ---------------------------------------------------------
@@ -58,12 +58,12 @@ class CPU
 	# Adds possible move to the board and alternates turn
 	private def add_possible_move board, move
 		if board.turn == "CPU"
-    		board.add_move(move, "O")
-    		board.turn = "Human"
-    	else
-    		board.add_move(move, "X")
-    		board.turn = "CPU"
-    	end
+			board.add_move(move, "O")
+			board.turn = "Human"
+		else
+			board.add_move(move, "X")
+			board.turn = "CPU"
+		end
 	end
 
 	# Counts the number of moves played on the board
