@@ -1,33 +1,44 @@
 require '../lib/board'
 require '../lib/cpu'
 
-# Board object for testing
-state = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-turn = "CPU"
-board = Board.new state, turn
-
-RSpec.describe CPU, "#initialize" do
-	context "with no arguments" do
-		it "creates a cpu object with empty choice attribute" do
-			cpu = CPU.new
-			expect(cpu.choice).to eq []
-		end
-	end
-end
-
 # CPU object for testing
 cpu = CPU.new
+
+# Board object for testing
+board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
+
+# Make all methods public for testing
+CPU.send(:public, *CPU.private_instance_methods)
 
 RSpec.describe CPU, "#get_moves" do
 	context "with an empty board as argument" do
 		it "returns an array of possible moves on the board" do
-			expect(cpu.get_moves(board)).to eq state
+			expect(cpu.get_moves(board)).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
 		end
 	end
 	context "with a non empty board as argument" do
 		it "returns an array of possible moves on the board" do
 			board.state = [1, 2, 3, "X", 5, 6, 7, 8, "O"]
 			expect(cpu.get_moves(board)).to eq [1, 2, 3, 5, 6, 7, 8]
+		end
+	end
+end
+
+RSpec.describe CPU, "#count_moves" do
+	context "with a board with 3 moves as argument" do
+		it "adds the given move to the board" do
+			board.state = ["O", "X", "O", 4, 5, 6, 7, 8, 9]
+			expect(cpu.count_moves(board)).to eq 3
+		end
+	end
+end
+
+RSpec.describe CPU, "#add_possible_move" do
+	context "with an empty board as argument" do
+		it "adds the given move to the board" do
+			possible = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
+			cpu.add_possible_move(possible, 1)
+			expect(possible.state).to eq ["O", 2, 3, 4, 5, 6, 7, 8, 9]
 		end
 	end
 end

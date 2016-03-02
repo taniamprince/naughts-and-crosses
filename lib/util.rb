@@ -47,9 +47,11 @@ def winner board
 
 	if winner == "X"
 		puts "#{colourize("Human", "human")} wins!"
+		puts ""
 		return true
 	elsif winner == "O"
 		puts "Sorry. The #{colourize("CPU", "cpu")} has won."
+		puts ""
 		return true
 	else
 		return false
@@ -58,7 +60,6 @@ end
 
 # Displays if there is a tie
 def tie board
-	puts ""
 	if board.check_winner == "none"
 		puts "Its a tie!"
 		puts ""
