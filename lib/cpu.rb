@@ -18,7 +18,7 @@ class CPU
 		moves = []  # Array to store possible moves
 
 		# Recursively get possible scores
-			get_moves(board).each do |move|
+		get_moves(board).each do |move|
 
 			# Get a new instance of the board
 			possible = board.new_board
