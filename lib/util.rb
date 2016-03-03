@@ -4,7 +4,8 @@ def welcome_message
 	puts "#{colourize("NAUGHTS & CROSSES", "gray")}"
 	puts "#{colourize("-----------------", "dark gray")}"
 	puts "Welome to Naughts & Crosses."
-	puts "#{colourize("CPU", "cpu")} player is Naughts and #{colourize("Human", "human")} player is Crosses."
+	puts "#{colourize("CPU", "cpu")} player is Naughts and" \
+		 " #{colourize("Human", "human")} player is Crosses."
 	puts ""
 end
 
@@ -17,27 +18,37 @@ def who_goes_first
 		return "Human"
 	else
 		puts "#{colourize("CPU", "cpu")} goes first!"
+		puts ""
 		return "CPU"
 	end
 end
 
-# Get move from human player
-def get_move board
+# Get move from the human player
+def get_move_human board
 
 	# Get move
 	puts "Enter a move number #{colourize("(0 to quit)", "red")}:"
-	move = gets.chomp.to_i
-	exit if move == 0
+	move = gets.chomp
+	exit if move == "0"
 
 	# Validate move
-	while board.validate(move - 1) do
+	while board.validate(move.to_i - 1) do
 		puts ""
-		puts "Invalid move. Please pick an empty slot from 1 to 9 #{colourize("(0 to quit)", "red")}:"
-		move = gets.chomp.to_i
-		exit if move == 0
+		puts "Invalid move. Please pick an empty slot from 1 to 9" \
+			 " #{colourize("(0 to quit)", "red")}:"
+		move = gets.chomp
+		exit if move == "0"
 	end
 
-	return move
+	return move.to_i
+end
+
+# Get move from the CPU
+def get_move_cpu board
+	puts "Thinking..."
+	cpu = CPU.new
+	cpu.minimax(board)
+	return cpu.choice
 end
 
 # Displays the winner

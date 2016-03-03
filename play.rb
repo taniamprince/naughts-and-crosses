@@ -13,15 +13,17 @@ loop do
 	# Initialize the board
 	board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], turn
 
-	# Display the board
-	board.display
-
 	# Alternate turns until a winner is found
 	(1..9).each_with_index do |i|
 		if board.turn == "Human" # Human turn
 
+			# If this is the first round then display the board
+			if i == 1
+				board.display
+			end
+
 			# Get move from player
-			move = get_move(board)
+			move = get_move_human(board)
 
 			# Add move to the board
 			board.add_move(move, "X")
@@ -31,14 +33,11 @@ loop do
 
 		else # CPU turn
 
-			# If this is the first move then pick a random location
+			# If this is the first round then pick a random location
 			if i == 1
 				move = board.state.shuffle[0]
 			else # Otherwise get the best possible move
-				puts "Thinking..."
-				cpu = CPU.new
-				cpu.minimax(board)
-				move = cpu.choice
+				move = get_move_cpu(board)
 			end
 
 			# Display CPU choice

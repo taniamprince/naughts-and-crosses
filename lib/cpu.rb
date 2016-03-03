@@ -19,7 +19,6 @@ class CPU
 
 		# Recursively get possible scores
 		get_moves(board).each do |move|
-
 			# Get a new instance of the board
 			possible = board.new_board
 
@@ -40,6 +39,7 @@ class CPU
 			@choice = moves[minScore]
 			return scores[minScore]
 		end
+
 	end
 
 	# Private ---------------------------------------------------------
@@ -66,7 +66,7 @@ class CPU
 		end
 	end
 
-	# Counts the number of moves played on the board
+	# Counts and returns the number of moves played on the board
 	private def count_moves board
 		moves = 0
 		board.state.each do |move|
@@ -77,7 +77,7 @@ class CPU
 		return moves
 	end
 
-	# Scores a move
+	# Returns the score of the board
 	private def score board
 		# Count the number of moves
 		moves = count_moves(board)
