@@ -29,21 +29,14 @@ def get_move_human board
 	exit if move == "0"
 
 	# Validate move
-	move = validate_move_human(board, move)
-
-	return move.to_i
-end
-
-# Validates human move input
-def validate_move_human board, move
 	while board.validate(move.to_i - 1) do
-		puts ""
 		puts "Invalid move. Please pick an empty slot from 1 to 9" \
 			 " #{colourize("(0 to quit)", "red")}:"
 		move = gets.chomp
 		exit if move == "0"
 	end
-	return move
+
+	return move.to_i
 end
 
 # Gets move from the CPU

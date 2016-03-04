@@ -62,5 +62,5 @@ loop do
 	tie(board)
 
 	# Check if human wants to play again
-	break if !play_again
+	break if play_again == false
 end
