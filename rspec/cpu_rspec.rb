@@ -5,7 +5,8 @@ require '../lib/cpu'
 cpu = CPU.new
 
 # Board object for testing
-board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
+board = Board.new
+board.turn = "CPU"
 
 # Make all methods public for testing
 CPU.send(:public, *CPU.private_instance_methods)
@@ -36,7 +37,8 @@ end
 RSpec.describe CPU, "#add_possible_move" do
 	context "with an empty board as argument" do
 		it "adds the given move to the board" do
-			possible = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
+			possible = Board.new
+			possible.turn = "CPU"
 			cpu.add_possible_move(possible, 1)
 			expect(possible.state).to eq ["O", 2, 3, 4, 5, 6, 7, 8, 9]
 		end

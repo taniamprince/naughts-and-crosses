@@ -3,17 +3,16 @@ require '../lib/board'
 RSpec.describe Board, "#initialize" do
 	context "with valid state and turn arguments" do
 		it "creates a board object" do
-			state = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-			turn = "CPU"
-			board = Board.new state, turn
-			expect(board.state).to eq state
-			expect(board.turn).to eq turn
+			board = Board.new
+			expect(board.state).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9]
+			expect(board.turn == "Human" || board.turn == "CPU").to eq true
 		end
 	end
 end
 
 # Board for testing
-board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], "CPU"
+board = Board.new
+board.turn = "CPU"
 
 RSpec.describe Board, "#new_board" do
 	context "with valid board object as argument" do
