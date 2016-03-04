@@ -12,7 +12,7 @@ class CPU
 	def minimax board
 
 		# Return the final score if the game is over
-		return score(board) if board.game_over == true
+		return score(board) if board.game_over
 
 		scores = [] # Array to store possible scores
 		moves = []  # Array to store possible moves

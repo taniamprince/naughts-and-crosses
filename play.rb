@@ -7,11 +7,12 @@ require './lib/util'
 welcome_message
 
 loop do
-	# Randomly determine who goes first
-	turn = who_goes_first
 
 	# Initialize the board
-	board = Board.new [1, 2, 3, 4, 5, 6, 7, 8, 9], turn
+	board = Board.new
+
+	# Display who goes first
+	who_goes_first(board)
 
 	# Alternate turns until a winner is found
 	(1..9).each_with_index do |i|
@@ -54,12 +55,12 @@ loop do
 		board.display
 
 		# Check for a winner
-		break if winner(board) == true
+		break if winner(board)
 	end
 
 	# Check for a tie
 	tie(board)
 
 	# Check if human wants to play again
-	break if play_again == false
+	break if !play_again
 end

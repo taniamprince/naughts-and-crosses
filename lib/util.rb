@@ -1,4 +1,4 @@
-# Welcome message displayed at the start of the game
+# Displays welcome message at the start of the game
 def welcome_message
 	puts ""
 	puts "#{colourize("NAUGHTS & CROSSES", "gray")}"
@@ -9,21 +9,18 @@ def welcome_message
 	puts ""
 end
 
-# Randomly chooses and returns which player goes first
-def who_goes_first
+# Displays which player goes first
+def who_goes_first board
 	puts "Randomly choosing who goes first..."
-	player = ["Human", "CPU"].shuffle.sample
-	if player == "Human"
+	if board.turn == "Human"
 		puts "#{colourize("Human", "human")} goes first!"
-		return "Human"
 	else
 		puts "#{colourize("CPU", "cpu")} goes first!"
 		puts ""
-		return "CPU"
 	end
 end
 
-# Get move from the human player
+# Gets move from the human player
 def get_move_human board
 
 	# Get move
@@ -32,6 +29,13 @@ def get_move_human board
 	exit if move == "0"
 
 	# Validate move
+	move = validate_move_human(move)
+
+	return move.to_i
+end
+
+# Validates human move input
+def validate_move_human move
 	while board.validate(move.to_i - 1) do
 		puts ""
 		puts "Invalid move. Please pick an empty slot from 1 to 9" \
@@ -39,11 +43,10 @@ def get_move_human board
 		move = gets.chomp
 		exit if move == "0"
 	end
-
-	return move.to_i
+	return move
 end
 
-# Get move from the CPU
+# Gets move from the CPU
 def get_move_cpu board
 	puts "Thinking..."
 	cpu = CPU.new
